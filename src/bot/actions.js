@@ -214,12 +214,3 @@ export function registerActions(bot) {
 }
 
 
-// ── Language selector ─────────────────────────────────────────
-import { setLang, LANGS, t } from '../i18n/index.js';
-
-bot.action(/^lang:(.+)$/, async (ctx) => {
-  await ctx.answerCbQuery().catch(() => {});
-  const lang = ctx.match[1];
-  setLang(ctx.from.id, lang);
-  await ctx.editMessageText(t(lang, 'langSet'));
-});
