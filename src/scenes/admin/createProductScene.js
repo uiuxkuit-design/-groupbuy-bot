@@ -10,8 +10,7 @@ const step = (n, total, title) =>
   `━━━━━━━━━━━━━━━━━━\n🔧 *Create Product* — Step ${n}/${total}\n━━━━━━━━━━━━━━━━━━\n\n*${title}*`;
 
 export const createProductScene = new Scenes.WizardScene('admin:create-product',
-
-  // ── Step 1: Product name ──────────────────────────────────
+ // Allow /cancel in any step
   async (ctx) => {
     ctx.wizard.state.data = {};
     await ctx.reply(step(1, 7, 'Product Name') + '\n\nEnter the product name:', {

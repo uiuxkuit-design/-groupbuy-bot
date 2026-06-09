@@ -105,10 +105,12 @@ export function registerCommands(bot) {
   });
 
   // /cancel
-  bot.command('cancel', async (ctx) => {
-    await ctx.scene?.leave?.().catch(() => {});
-    await ctx.reply('❌ Bekor.', backToMain());
-  });
+bot.command('cancel', async (ctx) => {
+  try {
+    await ctx.scene.leave();
+  } catch {}
+  await ctx.reply('❌ Bekor qilindi.', { reply_markup: { remove_keyboard: true } });
+});
 
   logger.info('Commands registered');
 }
